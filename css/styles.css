@@ -1,0 +1,516 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap');
+
+/* --- 1. Variables and Base Reset --- */
+/* =================================== */
+
+/* Theme Variables (Custom Properties) */
+:root[data-theme="light"] {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --accent-color: #5c98ff;
+    --skill-bg-color: #dddddd;
+    --svg-color: #767676;
+    --border-color: #888;
+    --shadow-color: rgba(0, 95, 204, 0.6);
+}
+
+:root[data-theme="dark"] {
+    --bg-color: #0f0f0f;
+    --text-color: #f5f5f5;
+    --accent-color: #5c98ff;
+    --skill-bg-color: #2a2a2a;
+    --svg-color: #b0b0b0;
+    --border-color: #555;
+    --shadow-color: rgba(92, 152, 255, 0.4);
+}
+
+/* Universal Reset for all elements */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base Body Styles */
+body {
+    max-width: 800px;
+    margin: 0 auto; /* Centers the body content */
+    padding: 60px 24px; /* Consistent padding on sides */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6; /* Improved for readability */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme transition */
+}
+
+/* List Reset */
+ul {
+    list-style: none;
+}
+
+/* Anchor Tag Reset */
+a {
+    text-decoration: none; /* Removes underlines */
+    color: inherit; /* Links inherit parent text color by default */
+}
+
+/* Button Reset */
+button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit; /* Inherits outline for accessibility */
+}
+
+/* --- 2. Utilities and Theme Toggle --- */
+/* =================================== */
+
+/* Theme Toggle Icons */
+#light-icon,
+#dark-icon {
+    display: none; /* Hide both by default */
+}
+
+/* Show icon based on current theme */
+[data-theme="light"] #light-icon,
+[data-theme="dark"] #dark-icon {
+    display: inline;
+}
+
+/* Typography Utility Class */
+.bold-text {
+    font-weight: 700;
+}
+
+/* --- 3. Main Layout (Header & Social Links) --- */
+/* ============================================= */
+
+/* Header Section */
+.header {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px; /* Spacing between header items */
+    margin-bottom: 2.5rem; /* Space below the header */
+}
+
+/* Name Title */
+.name {
+    font-size: 27px;
+    font-family: 'Sora', sans-serif;
+    line-height: 1.2;
+}
+
+/* Description Text */
+.description {
+    font-size: 19px;
+    margin-top: 8px;
+    width: 100%; /* Ensures description takes full width */
+}
+
+/* Language Select and Theme Toggle Container */
+.language-theme {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Language Select Dropdown */
+.select-language {
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    min-width: 180px;
+}
+
+/* Focus state for Language Select */
+.select-language:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 5px var(--shadow-color);
+}
+
+/* Social Links List */
+.socials-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 1.5rem; /* Space between social items */
+    margin: 1.5rem 0 2.5rem 0; /* Top and bottom margin for the list */
+}
+
+/* Individual Social Link Item */
+.socials-item a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+/* Social Link Hover State */
+.socials-item a:hover {
+    color: var(--accent-color);
+}
+
+/* Social Icon Styling */
+.socials-item a svg {
+    width: 24px;
+    height: 24px;
+    color: var(--svg-color);
+    transition: color 0.3s ease;
+}
+
+/* Social Icon Hover State */
+.socials-item a svg:hover {
+    color: var(--accent-color);
+}
+
+/* --- 4. Content Sections --- */
+/* ========================= */
+
+/* General Section Titles (h2, .experience-section-title, .projects-section-title) */
+h2,
+.experience-section-title,
+.projects-section-title {
+    font-family: 'Sora', sans-serif;
+    line-height: 1.2;
+    font-size: 24px;
+    color: var(--text-color);
+    margin-bottom: 1.5rem; /* Space below the title */
+    padding-bottom: 0.5rem; /* Small padding at the bottom */
+    /* border-bottom: 1px solid var(--skill-bg-color); Removed the border line */
+}
+
+.about-section {
+  margin-bottom: 60px;
+}
+
+/* About Me Section - Blockquote */
+.about-section blockquote {
+    font-style: italic;
+    color: var(--svg-color);
+    border-left: 4px solid var(--accent-color);
+    padding-left: 15px;
+    margin-bottom: 25px;
+}
+
+/* About Me Section - Inline Image Container */
+.about-image-inline-container {
+    display: flex;
+    justify-content: center;
+    margin: 2em 0; /* Ensures clear spacing above and below the image */
+    clear: both; /* Prevents floating content from wrapping around the image */
+}
+
+/* About Me Section - Inline Image */
+.about-image-inline-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* About Me Section - Paragraphs */
+.about-section p {
+    margin-bottom: 1em; /* Spacing between paragraphs */
+}
+
+/* Experience Section - Individual Item */
+.experience-item {
+    margin-bottom: 30px; /* Space between experience entries */
+    padding-bottom: 20px;
+    border-bottom: 1px dashed var(--skill-bg-color); /* Subtle dashed separator */
+}
+
+/* Last Experience Item - No Border */
+.experience-item:last-child {
+    border-bottom: none;
+}
+
+/* Experience Item - Job Title */
+.experience-job-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+
+/* Experience Item - Job Info (Dates, Location, etc.) */
+.experience-job-info {
+    font-size: 15px;
+    color: var(--svg-color); /* Lighter color for secondary info */
+    margin-bottom: 10px;
+}
+
+/* Experience Item - Description */
+.experience-description {
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+/* Experience Item - Skills List */
+.experience-skills {
+    font-size: 15px;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+/* Experience Item - Link */
+.experience-link a {
+    display: inline-block;
+    padding: 4px 0;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* Experience Link Hover State */
+.experience-link a:hover {
+    transform: translateY(-1px);
+    text-decoration: underline;
+}
+
+/* Experience Link Focus State (Accessibility) */
+.experience-link a:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Projects Section - Individual Project Card */
+.project-card {
+    background-color: var(--bg-color);
+    border: 1px solid var(--skill-bg-color);
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px; /* Space between project cards */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Project Card Hover State */
+.project-card:hover {
+    transform: translateY(-5px); /* Lift effect */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Project Card Title */
+.project-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+/* Project Card Description */
+.project-description {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+/* Project Card Skills List */
+.project-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between skill tags */
+    margin-bottom: 20px;
+}
+
+/* Individual Project Skill Tag */
+.project-skills li {
+    padding: 5px 10px;
+    background-color: var(--skill-bg-color);
+    color: var(--svg-color);
+    border-radius: 5px;
+    font-size: 14px;
+    white-space: nowrap; /* Prevents text breaking mid-word */
+}
+
+/* Project Card Links List */
+.project-links-list {
+    display: flex;
+    gap: 15px; /* Space between project links */
+}
+
+/* Individual Project Link Item */
+.project-links-item a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--svg-color);
+    transition: color 0.3s ease;
+}
+
+/* Project Link SVG Icon */
+.project-links-item a svg {
+    width: 26px;
+    height: 26px;
+    color: inherit; /* Icon color inherits from parent 'a' tag */
+}
+
+/* Project Link Hover State */
+.project-links-item a:hover {
+    color: var(--accent-color);
+}
+
+/* --- 5. Footer --- */
+/* ================= */
+
+/* Footer Section */
+.footer {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--skill-bg-color); /* Separator line above footer */
+    margin-top: 4rem; /* Significant top margin to separate from content */
+}
+
+/* Footer Paragraphs */
+.footer p {
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* --- 6. Responsiveness --- */
+/* ========================= */
+
+/* Media Query for Tablets and Smaller Screens */
+@media (max-width: 768px) {
+    body {
+        padding: 40px 20px; /* Reduced padding for smaller screens */
+    }
+
+    .header {
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 2rem;
+    }
+
+    .name {
+        font-size: 24px;
+    }
+
+    .description {
+        font-size: 17px;
+    }
+
+    .language-theme {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .select-language {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .socials-list {
+        justify-content: center; /* Center social icons on mobile */
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .socials-item a span {
+        display: none; /* Hide text labels for social links on mobile */
+    }
+
+    /* Adjustments for main section titles on mobile */
+    h2,
+    .experience-section-title,
+    .projects-section-title {
+        font-size: 20px;
+      margin-top: 60px;
+        margin-bottom: 1rem;
+        padding-bottom: 0.3rem;
+        /* border-bottom: 1px solid var(--skill-bg-color); REMOVED */
+    }
+
+    /* Adjustments for individual job/project titles on mobile */
+    .experience-job-title,
+    .project-title {
+        font-size: 18px;
+    }
+
+    .about-section blockquote {
+        padding-left: 10px;
+        font-size: 15px;
+        margin-bottom: 20px;
+    }
+
+    .about-section p,
+    .experience-description,
+    .project-description {
+        font-size: 15px;
+    }
+
+    .about-image-inline-container {
+        margin: 1.5em 0; /* Adjusted image margin for mobile */
+    }
+
+    .experience-item {
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+    }
+
+    .project-card {
+        padding: 20px;
+        margin-bottom: 25px;
+    }
+
+    .project-skills {
+        gap: 8px;
+        margin-bottom: 15px;
+    }
+
+    .project-skills li {
+        font-size: 13px;
+        padding: 4px 8px;
+    }
+
+    .project-links-list {
+        gap: 10px;
+    }
+
+    .project-links-item a svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .footer {
+        padding: 2rem 1rem;
+        margin-top: 3.5rem;
+    }
+}
+
+/* Media Query for Extra Small Screens (e.g., older phones) */
+@media (max-width: 480px) {
+    body {
+        padding: 20px 15px;
+    }
+    .name {
+        font-size: 22px;
+    }
+    .description {
+        font-size: 16px;
+    }
+    h2,
+    .experience-section-title,
+    .projects-section-title {
+        font-size: 18px;
+    }
+}
