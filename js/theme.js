@@ -1,22 +1,22 @@
-// Seleciona o botão e o elemento raiz do HTML
+// Get references to the toggle button and the root <html> element
 const toggleButton = document.getElementById("theme-toggle");
 const root = document.documentElement;
 
-// Recupera o tema salvo ou detecta o tema preferido do sistema
+// Load saved theme from localStorage or fall back to system preference
 const savedTheme = localStorage.getItem("theme") ||
   (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
 
-// Aplica o tema inicial
+// Apply the initial theme on page load
 applyTheme(savedTheme);
 
-// Adiciona evento de clique ao botão para alternar entre os temas
+// Toggle theme on button click
 toggleButton?.addEventListener("click", () => {
   const currentTheme = root.getAttribute("data-theme");
   const newTheme = currentTheme === "dark" ? "light" : "dark";
   applyTheme(newTheme);
 });
 
-// Função que aplica o tema e salva no localStorage
+// Apply the selected theme and persist the preference in localStorage
 function applyTheme(theme) {
   root.setAttribute("data-theme", theme);
   localStorage.setItem("theme", theme);
